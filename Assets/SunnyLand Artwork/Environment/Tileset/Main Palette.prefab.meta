@@ -1,14 +1,7 @@
 fileFormatVersion: 2
-guid: 2abb85ccc811c9548bb18717d38a404e
+guid: b5b76a0b0d03a06418a8ad9c9598e502
 PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 103349
-  packageName: Sunny Land
-  packageVersion: 1.1
-  assetPath: Assets/SunnyLand Artwork/Environment/Tileset/Main Palette.prefab
-  uploadId: 540939
