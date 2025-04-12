@@ -1,14 +1,16 @@
 fileFormatVersion: 2
-guid: 41aa8a785add652429373cc7db4e9d47
-AssetOrigin:
-  serializedVersion: 1
-  productId: 103349
-  packageName: Sunny Land
-  packageVersion: 1.1
-  assetPath: Assets/SunnyLand Artwork/Sprites/Enemies/Dino-Idle/dino-idle3.png
-  uploadId: 540939
+guid: e1698d73f2a1c7e4ea4d9152a33d90ea
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4662461455742614476
+    second: Vidas-02_0
+  - first:
+      213: -8022761207392465358
+    second: Vidas-02_1
+  - first:
+      213: -8364710568585925462
+    second: Vidas-02_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,27 +102,80 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Vidas-02_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 39
+        width: 267
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434c28f320c9b4fb0800000000000000
+      internalID: -4662461455742614476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vidas-02_1
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 39
+        width: 267
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e8693303d69a090800000000000000
+      internalID: -8022761207392465358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vidas-02_2
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 39
+        width: 267
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aacea765e049aeb80800000000000000
+      internalID: -8364710568585925462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Vidas-02_0: -4662461455742614476
+      Vidas-02_1: -8022761207392465358
+      Vidas-02_2: -8364710568585925462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
