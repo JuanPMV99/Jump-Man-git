@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 2055825992}
   - component: {fileID: 2055825995}
   - component: {fileID: 2055825996}
+  - component: {fileID: 2055825997}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -891,6 +892,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   fallLimitY: -10
+--- !u!95 &2055825997
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055825991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc9bfc49dc3a37a499059ef2ef7beaa6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2138518132
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +925,7 @@ GameObject:
   - component: {fileID: 2138518135}
   - component: {fileID: 2138518134}
   - component: {fileID: 2138518133}
+  - component: {fileID: 2138518136}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -983,6 +1007,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2138518136
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138518132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02b1ea4278e1d6641a652b9a8540fbac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

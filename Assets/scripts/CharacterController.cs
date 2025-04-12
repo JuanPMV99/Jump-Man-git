@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para recargar escena o cambiarla
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    public float fallLimitY = -10f; // DERROTA si cae más abajo que esto
+    public float fallLimitY = -10f;
 
     private Rigidbody2D rb;
+    private Animator animator; 
     private bool isGrounded;
     private bool facingRight = true;
     private bool canJump = false;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>(); 
     }
 
     void Update()
@@ -27,7 +29,10 @@ public class PlayerMovement : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // Verificar si está tocando el suelo
+        // 
+        animator.SetBool("isRunning", moveInput != 0);
+
+        // Verificar suelo
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         if (isGrounded) canJump = true;
 
@@ -38,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             canJump = false;
         }
 
-        // Mejora de salto
+        // Mejora salto
         if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -54,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        // DERROTA por caer al vacío
+        // Derrota por caída
         if (transform.position.y < fallLimitY)
         {
             Derrota();
@@ -69,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    // COLISIONES para victoria o derrota
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Meta"))
@@ -86,14 +90,12 @@ public class PlayerMovement : MonoBehaviour
     void Victoria()
     {
         Debug.Log("¡Victoria! 🎉");
-        // Aquí puedes cargar otra escena o mostrar pantalla de victoria
         // SceneManager.LoadScene("SiguienteNivel");
     }
 
     void Derrota()
     {
         Debug.Log("Derrota 💀");
-        // Recargar nivel actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -106,10 +108,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
-
-
-
-
-
 
