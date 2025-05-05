@@ -30,18 +30,18 @@ public class PlayerMovement : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         if (isGrounded) canJump = true;
 
-       
+
         if (canJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             canJump = false;
         }
 
-       
+
         if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -51,16 +51,16 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
-        
+
         if ((facingRight && moveInput < 0) || (!facingRight && moveInput > 0))
         {
             Flip();
         }
 
-        
+
         animator.SetBool("isRunning", moveInput != 0);
 
-        
+
         if (transform.position.y < fallLimitY)
         {
             Derrota();
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     void Victoria()
     {
         Debug.Log("¡Victoria! 🎉");
-        
+
     }
 
     void Derrota()
@@ -109,4 +109,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
