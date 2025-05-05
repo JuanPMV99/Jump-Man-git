@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 74c5b1be9ca4343ca9d68c58dd8b7332
+guid: d094cf6ac3d8a4d0bbbef5d6d6ad3eed
 AssetOrigin:
   serializedVersion: 1
   productId: 103349
   packageName: Sunny Land
   packageVersion: 1.1
-  assetPath: Assets/SunnyLand Artwork/Sprites/Enemies/opossum/opossum-3.png
+  assetPath: Assets/SunnyLand Artwork/Sprites/player/run/player-run-2.png
   uploadId: 540939
 TextureImporter:
   internalIDToNameTable: []
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -86,7 +86,7 @@ TextureImporter:
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 256
@@ -99,7 +99,7 @@ TextureImporter:
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 256

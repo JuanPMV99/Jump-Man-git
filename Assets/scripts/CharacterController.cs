@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Necesario para recargar escena o cambiarla
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,16 +10,19 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
-    public float fallLimitY = -10f; // DERROTA si cae más abajo que esto
+    public float fallLimitY = -10f;
+
+    public bool isGrounded; 
+    private bool canJump = false;
+    private bool facingRight = true;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool facingRight = true;
-    private bool canJump = false;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -27,18 +30,18 @@ public class PlayerMovement : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // Verificar si está tocando el suelo
+        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         if (isGrounded) canJump = true;
 
-        // Saltar
+       
         if (canJump && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             canJump = false;
         }
 
-        // Mejora de salto
+       
         if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -48,13 +51,16 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
-        // Flip
+        
         if ((facingRight && moveInput < 0) || (!facingRight && moveInput > 0))
         {
             Flip();
         }
 
-        // DERROTA por caer al vacío
+        
+        animator.SetBool("isRunning", moveInput != 0);
+
+        
         if (transform.position.y < fallLimitY)
         {
             Derrota();
@@ -69,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    // COLISIONES para victoria o derrota
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Meta"))
@@ -86,14 +91,12 @@ public class PlayerMovement : MonoBehaviour
     void Victoria()
     {
         Debug.Log("¡Victoria! 🎉");
-        // Aquí puedes cargar otra escena o mostrar pantalla de victoria
-        // SceneManager.LoadScene("SiguienteNivel");
+        
     }
 
     void Derrota()
     {
         Debug.Log("Derrota 💀");
-        // Recargar nivel actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -106,10 +109,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
-
-
-
-
-
 
