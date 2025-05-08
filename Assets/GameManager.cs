@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,9 @@ public class GameManager : MonoBehaviour
     public HUD hud;
     public GameObject Canvas;
     public GameObject CanvasWin;
+    public GameObject CanvasDerrota;
 
-    private int vidas = 3;
+    private int Vidas = 3;
     private bool juegoTerminado = false;
 
     private void Awake()
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -25,18 +27,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void QuitarVida()
+    public void PerderVida()
     {
-        if (juegoTerminado || vidas <= 0) return;
+        if (juegoTerminado) return;
 
-        vidas--;
+        Vidas--;
+        Debug.Log("Vida perdida. Vidas restantes: " + Vidas);
 
-        if (hud != null && vidas >= 0 && vidas < hud.vidas.Length)
+        if (Vidas >= 0 && Vidas < 3) // Evitar error si Vidas < 0
         {
-            hud.DesactivarVida(vidas);
+            hud.DesactivarVida(Vidas);
         }
 
-        if (vidas <= 0)
+        if (Vidas <= 0)
         {
             Derrota();
         }
@@ -61,19 +64,42 @@ public class GameManager : MonoBehaviour
 
         juegoTerminado = true;
 
-        if (Canvas != null)
-            Canvas.SetActive(true);
+        if (CanvasDerrota != null)
+            CanvasDerrota.SetActive(true);
 
         Time.timeScale = 0f;
         Debug.Log("Game Over");
     }
-    
 
     public void ReiniciarNivel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("NivelPrincipal");
+
+        // Reinicia los contadores lógicos
+        Vidas = 3;
+        juegoTerminado = false;
+
+        StartCoroutine(RecargarNivel());
     }
+
+    private IEnumerator RecargarNivel()
+    {
+        SceneManager.LoadScene("NivelPrincipal");
+        yield return null; // Espera un frame para que cargue la escena
+
+        hud = FindFirstObjectByType<HUD>();
+        Canvas = GameObject.Find("Canvas"); // Si tienes un canvas general
+        CanvasDerrota = GameObject.Find("CanvasDerrota"); // Reasigna el nuevo
+        CanvasWin = GameObject.Find("CanvasWin"); // Reasigna el nuevo
+
+        Debug.Log("HUD reconectado: " + hud);
+
+        // Oculta todos los canvas
+        if (CanvasDerrota != null) CanvasDerrota.SetActive(false);
+        if (CanvasWin != null) CanvasWin.SetActive(false);
+        if (Canvas != null) Canvas.SetActive(false);
+    }
+
 
     public void IrAlMenu()
     {
@@ -87,3 +113,4 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 }
+
